@@ -1,3 +1,4 @@
+import CommonDashboard from "../Pages/Dashboard/CommonDashboard/CommonDashboard";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/dashboard",
+        element: <CommonDashboard></CommonDashboard>,
       },
     ],
   },
