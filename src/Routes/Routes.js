@@ -1,3 +1,4 @@
+import BooksCollection from "../Pages/BooksCollection/BooksCollection";
 import CommonDashboard from "../Pages/Dashboard/CommonDashboard/CommonDashboard";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
@@ -26,6 +27,13 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <CommonDashboard></CommonDashboard>,
+      },
+      {
+        path: "/category/:id",
+        element: <BooksCollection></BooksCollection>,
+        loader: async ({ params }) => {
+          return fetch(`http://localhost:5000/category/${params.id}`);
+        },
       },
     ],
   },

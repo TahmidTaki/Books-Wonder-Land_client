@@ -30,7 +30,7 @@ const CategoryCard = ({ category }) => {
           </span>
           <div className="pt-8 text-center">
             <Link
-              to={`/books/${_id}`}
+              to={`/category/${_id}`}
               className="text-center rounded-lg p-4 bg-white  text-gray-700 font-bold text-lg"
             >
               Find Books
