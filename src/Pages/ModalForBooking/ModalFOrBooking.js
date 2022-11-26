@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const ModalFOrBooking = ({ user, bookingItem, setBookingItem }) => {
   //   const { userName } = user;
@@ -24,8 +25,25 @@ const ModalFOrBooking = ({ user, bookingItem, setBookingItem }) => {
       buyerPhone: phone,
       meetLocation: location,
     };
-    console.log(booking);
-    setBookingItem(null);
+    /* console.log(booking);
+    setBookingItem(null); */
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          setBookingItem(null);
+          toast.success("Booking confirmed");
+        } else {
+          toast.error(data.message);
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div>
