@@ -1,4 +1,7 @@
+import DashboardLayout from "../Layouts/DashboardLayout";
 import BooksCollection from "../Pages/BooksCollection/BooksCollection";
+import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import BuyerDashboard from "../Pages/Dashboard/BuyerDashboard/BuyerDashboard";
 import CommonDashboard from "../Pages/Dashboard/CommonDashboard/CommonDashboard";
 import Login from "../Pages/Login/Login";
@@ -44,6 +47,35 @@ const router = createBrowserRouter([
         loader: async ({ params }) => {
           return fetch(`http://localhost:5000/category/${params.id}`);
         },
+      },
+      {
+        path: "/allsellers",
+        element: (
+          <PrivateRoute>
+            <AllSellers></AllSellers>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/allbuyers",
+        element: (
+          <PrivateRoute>
+            <AllBuyers></AllBuyers>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/dashboards",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboards",
       },
     ],
   },
