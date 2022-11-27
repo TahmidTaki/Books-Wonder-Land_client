@@ -11,7 +11,11 @@ const BuyerDashboard = () => {
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
       const data = await res.json();
       console.log(data);
       return data;
@@ -35,7 +39,7 @@ const BuyerDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking, idx) => (
+            {bookings?.map((booking, idx) => (
               <tr key={idx}>
                 <th>{idx + 1}</th>
                 <td>

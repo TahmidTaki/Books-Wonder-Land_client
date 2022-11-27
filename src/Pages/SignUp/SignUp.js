@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
+import useToken from "../../Hooks/useToken";
 
 const SignUp = () => {
   const {
@@ -10,9 +11,17 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
+  const [newUserEmail, setNewUserEmail] = useState("");
+  const [token] = useToken(newUserEmail);
+  if (token) {
+    navigate("/");
+  }
 
-  const { user, createUser, updateUser } = useContext(AuthContext);
-
+  const { user, createUser, updateUser, loading } = useContext(AuthContext);
+  if (loading) {
+    return <h2>Loading..</h2>;
+  }
   //save user info to database
   const addUserDatabase = (name, email, role) => {
     const user = { name, email, role };
@@ -24,7 +33,7 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setNewUserEmail(email);
       });
   };
 
