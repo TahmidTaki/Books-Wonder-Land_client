@@ -45,13 +45,14 @@ const AddProduct = () => {
         if (imageData.success) {
           console.log(imageData.data.url);
           const date = new Date().toDateString();
+          const rp = parseInt(pInfo.resalePrice);
           const book = {
             postedOn: date,
             image: imageData.data.url,
             name: pInfo.name,
             condition: pInfo.condition,
             location: pInfo.location,
-            resalePrice: pInfo.resalePrice,
+            resalePrice: rp,
             originalPrice: pInfo.oriPrice,
             usageDuration: pInfo.usageDuration,
             purchaseYear: pInfo.purchaseYear,

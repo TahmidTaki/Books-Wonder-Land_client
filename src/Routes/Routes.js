@@ -3,6 +3,7 @@ import BooksCollection from "../Pages/BooksCollection/BooksCollection";
 import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import BuyerDashboard from "../Pages/Dashboard/BuyerDashboard/BuyerDashboard";
+import Payment from "../Pages/Dashboard/BuyerDashboard/Payment/Payment";
 import CommonDashboard from "../Pages/Dashboard/CommonDashboard/CommonDashboard";
 import AddProduct from "../Pages/Dashboard/SellerDashboard/AddProduct";
 import MyProducts from "../Pages/Dashboard/SellerDashboard/MyProducts";
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
       {
         path: "/buyerdashboard",
         element: <BuyerDashboard></BuyerDashboard>,
+      },
+      {
+        path: "/payment/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`),
       },
       {
         path: "/category/:id",
