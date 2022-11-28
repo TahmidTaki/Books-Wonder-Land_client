@@ -6,6 +6,7 @@ import BuyerDashboard from "../Pages/Dashboard/BuyerDashboard/BuyerDashboard";
 import CommonDashboard from "../Pages/Dashboard/CommonDashboard/CommonDashboard";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -48,26 +49,10 @@ const router = createBrowserRouter([
           return fetch(`http://localhost:5000/category/${params.id}`);
         },
       },
-      {
-        path: "/allsellers",
-        element: (
-          <PrivateRoute>
-            <AllSellers></AllSellers>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/allbuyers",
-        element: (
-          <PrivateRoute>
-            <AllBuyers></AllBuyers>
-          </PrivateRoute>
-        ),
-      },
     ],
   },
   {
-    path: "/dashboards",
+    path: "/dashboard",
     element: (
       <PrivateRoute>
         <DashboardLayout></DashboardLayout>
@@ -75,7 +60,20 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboards",
+        path: "/dashboard/allsellers",
+        element: (
+          <AdminRoute>
+            <AllSellers></AllSellers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allbuyers",
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
       },
     ],
   },

@@ -27,6 +27,21 @@ const AllSellers = () => {
         }
       });
   };
+  const deleteSeller = (id) => {
+    fetch(`http://localhost:5000/sellers/${id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success("Seller Deletion was success");
+          refetch();
+        }
+      });
+  };
 
   return (
     <div>
@@ -37,9 +52,14 @@ const AllSellers = () => {
           {seller.email}
           {seller.role}
           {seller?.sellerVerified !== "verified" && (
-            <button className="btn" onClick={() => verifySeller(seller._id)}>
-              verify
-            </button>
+            <>
+              <button className="btn" onClick={() => verifySeller(seller._id)}>
+                verify
+              </button>
+              <button className="btn btn-accent" onClick={() => deleteSeller(seller._id)}>
+                Delete
+              </button>
+            </>
           )}
         </div>
       ))}
