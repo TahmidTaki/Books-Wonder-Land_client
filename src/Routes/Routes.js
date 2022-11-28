@@ -4,10 +4,13 @@ import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import BuyerDashboard from "../Pages/Dashboard/BuyerDashboard/BuyerDashboard";
 import CommonDashboard from "../Pages/Dashboard/CommonDashboard/CommonDashboard";
+import AddProduct from "../Pages/Dashboard/SellerDashboard/AddProduct";
+import MyProducts from "../Pages/Dashboard/SellerDashboard/MyProducts";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute";
+import SellerRoute from "./SellerRoute/SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layouts/Main");
@@ -31,7 +34,7 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: "/dashboard",
+        path: "/dashboards",
         element: <CommonDashboard></CommonDashboard>,
       },
       {
@@ -73,6 +76,22 @@ const router = createBrowserRouter([
           <AdminRoute>
             <AllBuyers></AllBuyers>
           </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/addproduct",
+        element: (
+          <SellerRoute>
+            <AddProduct></AddProduct>
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "/dashboard/myproducts",
+        element: (
+          <SellerRoute>
+            <MyProducts></MyProducts>
+          </SellerRoute>
         ),
       },
     ],

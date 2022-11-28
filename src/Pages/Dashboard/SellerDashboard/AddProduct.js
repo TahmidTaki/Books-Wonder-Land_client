@@ -103,12 +103,7 @@ const AddProduct = () => {
         <label className="label">
           <span className="label-text">Product Condition</span>
         </label>
-        <select
-          className="input input-bordered w-full"
-          {...register("condition", {
-            required: true,
-          })}
-        >
+        <select className="input input-bordered w-full" {...register("condition")}>
           <option value="excellent">Excellent</option>
           <option value="good">Good</option>
           <option value="fair">Fair</option>
@@ -206,7 +201,7 @@ const AddProduct = () => {
         <input
           className="input input-bordered w-full"
           type="text"
-          disabled
+          readOnly
           defaultValue="available"
           {...register("status", {
             required: "This field is Required",
@@ -222,7 +217,7 @@ const AddProduct = () => {
           className="input input-bordered w-full"
           type="text"
           defaultValue={user?.displayName}
-          disabled
+          readOnly
           {...register("seller", {
             required: "This field is Required",
           })}
@@ -237,7 +232,7 @@ const AddProduct = () => {
           className="input input-bordered w-full"
           type="text"
           defaultValue={user?.email}
-          disabled
+          readOnly
           {...register("email", {
             required: "This field is Required",
           })}
