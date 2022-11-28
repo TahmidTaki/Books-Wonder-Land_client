@@ -1,12 +1,30 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const CheckoutForm = ({ booking }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
+  const [transactionId, setTransactionId] = useState("");
+  const [success, setSuccess] = useState("");
+  const [processing, setProcessing] = useState(false);
   const { price } = booking;
   //   console.log(typeof price);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ price }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, [price]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -30,6 +48,52 @@ const CheckoutForm = ({ booking }) => {
     } else {
       setCardError("");
     }
+    setSuccess("");
+    setProcessing(true);
+
+    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: card,
+        billing_details: {
+          name: booking.buyer,
+          email: booking.buyerEmail,
+        },
+      },
+    });
+
+    if (confirmError) {
+      setCardError(confirmError.message);
+      return;
+    }
+    // console.log(paymentIntent);
+    if (paymentIntent.status === "succeeded") {
+      console.log("card info", card);
+      // store payment info in the database
+      const payment = {
+        price: booking.price,
+        transactionId: paymentIntent.id,
+        email: booking.buyerEmail,
+        bookingId: booking._id,
+        itemId: booking.itemId,
+      };
+      fetch("http://localhost:5000/payments", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            setSuccess("Payment Was Successful, Thanks for being with us");
+            setTransactionId(paymentIntent.id);
+          }
+        });
+    }
+    setProcessing(false);
   };
   return (
     <div>
@@ -50,11 +114,23 @@ const CheckoutForm = ({ booking }) => {
             },
           }}
         />
-        <button className="btn btn-sm mt-4 btn-primary" type="submit" disabled={!stripe}>
+        <button
+          className="btn btn-sm mt-4 btn-primary"
+          type="submit"
+          disabled={!stripe || !clientSecret || processing}
+        >
           Pay
         </button>
       </form>
       <p className="text-red-500">{cardError}</p>
+      {success && (
+        <div>
+          <p className="text-green-500">{success}</p>
+          <p>
+            Your transactionId: <span className="font-bold">{transactionId}</span>
+          </p>
+        </div>
+      )}
     </div>
   );
 };
