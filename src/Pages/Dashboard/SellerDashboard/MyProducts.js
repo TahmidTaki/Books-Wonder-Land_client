@@ -43,6 +43,21 @@ const MyProducts = () => {
       });
   };
 
+  const advertise = (id) => {
+    fetch(`http://localhost:5000/advertise/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Item Sent to Advertise");
+        }
+      });
+  };
+
   return (
     <div>
       {books.map((book) => (
@@ -52,6 +67,7 @@ const MyProducts = () => {
           <button onClick={() => deleteBook(book._id)} className="btn btn-small">
             Delete
           </button>
+          <button onClick={() => advertise(book._id)}>Advertise</button>
 
           {/*  <label onClick={() => setBookingItem(book)} htmlFor="modal-booking" className="btn">
             Book this item
