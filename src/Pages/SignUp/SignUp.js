@@ -18,7 +18,7 @@ const SignUp = () => {
     navigate("/");
   }
 
-  const { user, createUser, updateUser, loading } = useContext(AuthContext);
+  const { user, createUser, googleSignIn, updateUser, loading } = useContext(AuthContext);
   if (loading) {
     return <h2>Loading..</h2>;
   }
@@ -36,6 +36,20 @@ const SignUp = () => {
         setNewUserEmail(email);
       });
   };
+  //save social user info to database
+  /* const addUserDatabase2 = (name, email, role) => {
+    const user = { name, email, role };
+    console.log("from: ", user);
+    fetch("http://localhost:5000/userssocial", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setNewUserEmail(email);
+      });
+  }; */
 
   //firebase sign up function
   const handleSignUp = (info) => {
@@ -56,6 +70,17 @@ const SignUp = () => {
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
+  };
+
+  //social signup/login
+  const handleGoogleSIgnIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user.displayName, user.email);
+        addUserDatabase(user.displayName, user.email, "buyer");
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -117,7 +142,9 @@ const SignUp = () => {
         <input className="btn btn-secondary mt-12" type="submit" value="Register" />
       </form>
       <div className="divider">OR</div>
-      <button className="btn btn-outline btn-wide">Login with Google</button>
+      <button className="btn btn-outline btn-wide" onClick={handleGoogleSIgnIn}>
+        Login with Google
+      </button>
       <p>
         Already have an account? <Link to="/login">Sign In</Link>
       </p>
