@@ -78,7 +78,7 @@ const MyProducts = () => {
         <h2 className="text-xl font-semibold">Books List Uploaded by {user.displayName}</h2>
 
         {books.map((book) => (
-          <ul key={book._id} className="flex flex-col divide-y divide-gray-700">
+          <ul key={book._id} className="flex flex-col divide-y divide-gray-700 px-4 ">
             <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
               <div className="flex w-full space-x-2 sm:space-x-4">
                 <img
@@ -149,6 +149,7 @@ const MyProducts = () => {
                 </div>
               </div>
             </li>
+            <div className="divider"></div>
           </ul>
         ))}
       </div>

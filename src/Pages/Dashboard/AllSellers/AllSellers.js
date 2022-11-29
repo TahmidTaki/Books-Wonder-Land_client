@@ -46,7 +46,7 @@ const AllSellers = () => {
   return (
     <div>
       <h3>All sellers: {sellers.length}</h3>
-      {sellers.map((seller) => (
+      {/* {sellers.map((seller) => (
         <div key={seller._id}>
           {seller._id}
           {seller.email}
@@ -56,13 +56,58 @@ const AllSellers = () => {
               <button className="btn" onClick={() => verifySeller(seller._id)}>
                 verify
               </button>
-              <button className="btn btn-accent" onClick={() => deleteSeller(seller._id)}>
-                Delete
-              </button>
             </>
           )}
+          <button className="btn btn-accent" onClick={() => deleteSeller(seller._id)}>
+            Delete
+          </button>
         </div>
-      ))}
+      ))} */}
+
+      <table className="table w-full">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Verification</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {sellers.map((seller) => (
+            <tr key={seller._id}>
+              <td>
+                <div className="flex items-center space-x-3">
+                  <div className="avatar"></div>
+                  <div>
+                    <div className="font-bold">{seller.name}</div>
+                  </div>
+                </div>
+              </td>
+              <td>{seller.email}</td>
+              <td>
+                {seller?.sellerVerified === "verified" ? (
+                  <div className="badge badge-info gap-2">Verified Seller</div>
+                ) : (
+                  <>
+                    <button
+                      className="btn btn-outline btn-accent btn-sm"
+                      onClick={() => verifySeller(seller._id)}
+                    >
+                      Verify
+                    </button>
+                  </>
+                )}
+              </td>
+              <th>
+                <button onClick={() => deleteSeller(seller._id)} className="btn btn-error btn-xs">
+                  Delete
+                </button>
+              </th>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

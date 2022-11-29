@@ -40,13 +40,16 @@ const ReportedItems = () => {
 
   return (
     <div>
-      <h3>Reported Items: {reportedItems.length}</h3>
+      <h3 className="text-red-300 mt-8 mb-4">Reported Items: {reportedItems.length}</h3>
       {reportedItems.map((item) => (
         <div key={item._id}>
-          <h3>{item.name}</h3>
-          <h3>{item.status}</h3>
-          <h3>{item.seller}</h3>
-          <button onClick={() => deleteItem(item._id)}>Delete Item</button>
+          <h3>Item Name: {item.name}</h3>
+          <h3>Item Status: {item.status}</h3>
+          <h3>Seller: {item.seller}</h3>
+          <button className="btn btn-sm btn-error mt-4" onClick={() => deleteItem(item._id)}>
+            Delete Item
+          </button>
+          <div className="divider"></div>
         </div>
       ))}
     </div>
