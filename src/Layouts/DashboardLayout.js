@@ -80,6 +80,92 @@ const DashboardLayout = () => {
       ) : (
         <></>
       )}
+      {/* seller view of dashboard */}
+      {isSeller ? (
+        <>
+          {/* seller account info */}
+          <div className="flex flex-col justify-center">
+            <ul className="menu p-4 w-80 mx-auto bg-base-100 text-base-content">
+              <div className=" p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
+                <div className="flex items-center p-2 space-x-4">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjfb4boKKaHu5x1oFASsO92hJb-78nyVcFKRT_WxvRf1O165kUOYWfa0uGn12tfdw8uRU&usqp=CAU"
+                    alt=""
+                    className="w-12 h-12 rounded-full dark:bg-gray-500"
+                  />
+                  <div>
+                    <h2 className="text-lg font-semibold">{user.displayName}</h2>
+                    <h2 className="text-md ">{user.email}</h2>
+                  </div>
+                </div>
+                <div className="divide-y divide-green-700">
+                  <ul className="pt-4 pb-2 space-y-1 text-sm">
+                    <li>
+                      <p className="flex items-center p-2 space-x-3 rounded-md">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512"
+                          className="w-5 h-5 fill-current dark:text-gray-400"
+                        >
+                          <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
+                          <rect width="32" height="64" x="256" y="232"></rect>
+                        </svg>
+                        <span>Seller Account</span>
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </ul>
+          </div>
+
+          {/* tabs for menu */}
+          <div className="badge badge-secondary badge-outline my-8">
+            Choose Tabs According to necessary actions below
+          </div>
+          <div className="flex items-center -mx-4 overflow-x-auto overflow-y-hidden sm:justify-center flex-nowrap dark:bg-gray-800 dark:text-gray-100">
+            <Link
+              to="/dashboard/addproduct"
+              className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border border-b-0 rounded-t-lg dark:border-gray-400 dark:text-gray-50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4"
+              >
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span>Add Products</span>
+            </Link>
+            <Link
+              to="/dashboard/myproducts"
+              className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border-b dark:border-gray-400 dark:text-gray-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <span>My Products</span>
+            </Link>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
       <Outlet></Outlet>
     </div>
   );
