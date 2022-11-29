@@ -8,7 +8,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PKEY);
 const Payment = () => {
   const booking = useLoaderData();
   return (
-    <div>
+    <div className="bg-gray-800 flex flex-col pt-24 items-center h-screen">
       <h3>Payment for {booking.item}</h3>
       <p>Total Payment: MYR {booking.price}</p>
       <div className="w-96 mx-auto mt-8">

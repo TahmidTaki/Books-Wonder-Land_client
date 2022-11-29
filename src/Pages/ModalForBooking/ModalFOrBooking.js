@@ -21,6 +21,7 @@ const ModalFOrBooking = ({ user, bookingItem, setBookingItem }) => {
       buyer: buyerName,
       item: itemName,
       itemId: bookingItem._id,
+      itemImg: bookingItem.image,
       price: price,
       buyerPhone: phone,
       meetLocation: location,

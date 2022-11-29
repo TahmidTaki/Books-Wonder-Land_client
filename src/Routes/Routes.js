@@ -39,10 +39,10 @@ const router = createBrowserRouter([
         path: "/dashboards",
         element: <CommonDashboard></CommonDashboard>,
       },
-      {
+      /* {
         path: "/buyerdashboard",
         element: <BuyerDashboard></BuyerDashboard>,
-      },
+      }, */
       {
         path: "/payment/:id",
         element: <Payment></Payment>,
@@ -69,6 +69,10 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "/dashboard/myorders",
+        element: <BuyerDashboard></BuyerDashboard>,
+      },
       {
         path: "/dashboard/allsellers",
         element: (
