@@ -22,5 +22,6 @@ ReactJS, MongoDB, Node & ExpressJS (Backend), Firebase Authentication, JSON Web 
 
 ### Admin role email & password
 
-Email: admin@gmail.com
-Password: 654321
+adminEmail: \<admin@gmail.com\>
+
+adminPassword: \<654321\>
