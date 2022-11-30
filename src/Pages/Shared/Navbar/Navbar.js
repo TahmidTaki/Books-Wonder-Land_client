@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-secondary-content text-primary-content">
+    <div className="flex justify-around navbar bg-secondary-content text-primary-content">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -47,22 +47,21 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case sm:text-md md:text-xl">
           Books WonderLand
         </Link>
       </div>
+
       <div className="navbar-end">
-        <div className="navbar-end">
-          {user ? (
-            <button onClick={handleLogOut} to="/signup" className="btn">
-              SignOut
-            </button>
-          ) : (
-            <Link to="/signup" className="btn">
-              Register
-            </Link>
-          )}
-        </div>
+        {user ? (
+          <button onClick={handleLogOut} to="/signup" className="btn btn-sm">
+            SignOut
+          </button>
+        ) : (
+          <Link to="/signup" className="btn btn-sm">
+            Register
+          </Link>
+        )}
       </div>
     </div>
   );
