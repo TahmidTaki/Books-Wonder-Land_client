@@ -1,0 +1,4 @@
+.blogs{
+    background: radial-gradient(circle, transparent 20%, #142216 20%, #142216 80%, transparent 80%, transparent) 0% 0% / 64px 64px, radial-gradient(circle, transparent 20%, #142216 20%, #142216 80%, transparent 80%, transparent) 32px 32px / 64px 64px, linear-gradient(#09382c 2px, transparent 2px) 0px -1px / 32px 32px, linear-gradient(90deg, #09382c 2px, #142216 2px) -1px 0px / 32px 32px #142216;
+background-color: #142216;
+}

@@ -2,11 +2,13 @@ import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-quer
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import "./AddProduct.css";
 
 const AddProduct = () => {
   const { user, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
   const imgbbKey = process.env.REACT_APP_imgbb;
 
   const { isLoading, data: categories } = useQuery({
@@ -75,6 +77,7 @@ const AddProduct = () => {
             .then((res) => res.json())
             .then((data) => {
               toast.success("Book added successfully");
+              navigate("/dashboard/myproducts");
             });
         }
       });

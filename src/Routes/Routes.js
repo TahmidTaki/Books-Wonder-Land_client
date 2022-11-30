@@ -1,4 +1,5 @@
 import DashboardLayout from "../Layouts/DashboardLayout";
+import Blogs from "../Pages/Blogs/Blogs";
 import BooksCollection from "../Pages/BooksCollection/BooksCollection";
 import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
@@ -36,13 +37,9 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: "/dashboards",
-        element: <CommonDashboard></CommonDashboard>,
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
-      /* {
-        path: "/buyerdashboard",
-        element: <BuyerDashboard></BuyerDashboard>,
-      }, */
       {
         path: "/payment/:id",
         element: <Payment></Payment>,

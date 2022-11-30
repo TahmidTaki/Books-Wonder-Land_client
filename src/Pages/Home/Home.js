@@ -25,7 +25,7 @@ const Home = () => {
     <div>
       <div className="banner py-8">
         <section className="text-gray-100">
-          <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row">
+          <div className="container  flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row ">
             <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
               <img
                 src="https://i.ibb.co/T1fSvwP/99349-girl-with-books.gif"
@@ -62,7 +62,11 @@ const Home = () => {
       {/* categories of books */}
       <div className="py-24 categories-section">
         <h3 className="text-4xl font-semibold mb-8">Choose Book Categories Below</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
           {categories?.map((category) => (
             <CategoryCard key={category._id} category={category}></CategoryCard>
           ))}
@@ -73,7 +77,7 @@ const Home = () => {
       {/* <h3>{advertisedItems.length}</h3> */}
 
       {/* 50%off banner */}
-      <div className="p-6 py-12 bg-lime-500 text-gray-900">
+      <div data-aos="fade-in" className="p-6 py-12 bg-lime-500 text-gray-900">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between">
             <h2 className="text-center text-6xl tracking-tighter font-bold">

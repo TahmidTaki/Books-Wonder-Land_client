@@ -20,7 +20,9 @@ const LoadSpinner = () => {
         </div>
         <br />
       </div>
-      <h3 className="text-success text-2xl mt-8">Loading data..</h3>
+      <h3 className="text-success text-2xl mt-8">
+        Loading data..If loading for more than 5 seconds, then please reload the page
+      </h3>
     </>
   );
 };

@@ -5,8 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthProvider from "./contexts/AuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const queryClient = new QueryClient();
+AOS.init();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
