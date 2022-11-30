@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import "./MyProduct.css";
 
 const MyProducts = () => {
   const { user, loading } = useContext(AuthContext);
@@ -74,11 +75,11 @@ const MyProducts = () => {
       {/*  <label onClick={() => setBookingItem(book)} htmlFor="modal-booking" className="btn">
         Book this item
       </label> */}
-      <div className="flex flex-col justify-center items-center p-6 space-y-4 sm:p-10 bg-gray-900 text-gray-100">
+      <div className="flex flex-col justify-center items-center p-6 space-y-4 sm:p-10 product-list text-gray-100">
         <h2 className="text-xl font-semibold">Books List Uploaded by {user.displayName}</h2>
 
         {books.map((book) => (
-          <ul key={book._id} className="flex flex-col divide-y divide-gray-700 px-4 ">
+          <ul key={book._id} className="flex flex-col bg-gray-900 pr-4 rounded-lg">
             <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
               <div className="flex w-full space-x-2 sm:space-x-4">
                 <img

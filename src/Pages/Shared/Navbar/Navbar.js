@@ -37,18 +37,18 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-green-800 text-2xl font-bold rounded-box w-52"
           >
-            <li>
+            <li className="text-primary-content">
               <Link to="/dashboard">DashBoard</Link>
             </li>
-            <li>
-              <Link to="/buyerdashboard">Buyer DashBoard</Link>
+            <li className="text-primary-content">
+              <Link to="/blogs">Blogs</Link>
             </li>
           </ul>
         </div>
       </div>
       <div className="navbar-center">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          My Books Resale
+          Books WonderLand
         </Link>
       </div>
       <div className="navbar-end">

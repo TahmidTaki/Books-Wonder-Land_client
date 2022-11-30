@@ -29,14 +29,16 @@ const AllBuyers = () => {
   };
   return (
     <div>
-      <h3 className="mt-4 mb-4 text-green-300">Total Buyers: {buyers.length}</h3>
+      <h3 className="mt-4 mb-4 text-green-300 text-2xl font-semibold my-8">
+        Total Buyers: {buyers.length}
+      </h3>
 
       <table className="table w-full">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
+            <th className="bg-secondary-focus text-white">Name</th>
+            <th className="bg-secondary-focus text-white">Email</th>
+            <th className="bg-secondary-focus text-white">Action</th>
           </tr>
         </thead>
         <tbody>

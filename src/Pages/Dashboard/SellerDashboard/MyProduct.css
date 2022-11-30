@@ -1,0 +1,5 @@
+.product-list{
+    background: #16391e;
+background: -webkit-radial-gradient(circle, #16391e 0%, #303232 100%);
+background: radial-gradient(circle, #16391e 0%, #303232 100%);
+}

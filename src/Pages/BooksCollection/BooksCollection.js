@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import ModalFOrBooking from "../ModalForBooking/ModalFOrBooking";
 import useAdmin from "../../Hooks/useAdmin";
 import useSeller from "../../Hooks/useSeller";
+import "./BooksCollection.css";
 const BooksCollection = () => {
   const { user, loading } = useContext(AuthContext);
   const [bookingItem, setBookingItem] = useState(null);
@@ -35,14 +36,14 @@ const BooksCollection = () => {
       });
   };
   return (
-    <div>
-      <h3>Choose From the list below</h3>
+    <div className="collection-page-bg">
+      <h3 className="text-3xl font-bold py-8">Choose From the list below</h3>
       {/* books collection under specific category starts */}
       {booksData.map((book) => (
         <div key={book._id}>
           <section className="bg-gray-800 text-gray-100 w-4/5 mx-auto  mb-8">
             <div className="container flex flex-col-reverse mx-auto lg:flex-row">
-              <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-4 lg:w-1/2 xl:w-2/5 bg-green-400 text-gray-900">
+              <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-4 lg:w-1/2 xl:w-2/5 card-background-blur text-gray-900">
                 <div className="flex space-x-2 sm:space-x-4">
                   <div className="space-y-2">
                     <p className="text-lg font-medium leading-snug">{book.name}</p>

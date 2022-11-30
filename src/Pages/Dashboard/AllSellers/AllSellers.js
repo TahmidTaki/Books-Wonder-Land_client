@@ -45,7 +45,9 @@ const AllSellers = () => {
 
   return (
     <div>
-      <h3>All sellers: {sellers.length}</h3>
+      <h3 className="mt-8 mb-4 text-primary-content text-2xl font-semibold">
+        Total sellers: {sellers.length}
+      </h3>
       {/* {sellers.map((seller) => (
         <div key={seller._id}>
           {seller._id}
@@ -67,10 +69,10 @@ const AllSellers = () => {
       <table className="table w-full">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Verification</th>
-            <th></th>
+            <th className="bg-secondary-content">Name</th>
+            <th className="bg-secondary-content">Email</th>
+            <th className="bg-secondary-content">Verification</th>
+            <th className="bg-secondary-content"></th>
           </tr>
         </thead>
         <tbody>

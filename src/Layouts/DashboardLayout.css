@@ -1,0 +1,6 @@
+.dashboad-full{
+    background-image: radial-gradient(#0d4b2c 1px, transparent 1px), radial-gradient(#0d4b2c 1px, transparent 1px);
+background-size: 35px 35px;
+background-position: 0 0, 17.5px 17.5px;
+background-color: #04080571;
+}

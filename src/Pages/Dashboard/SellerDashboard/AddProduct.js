@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import "./AddProduct.css";
 
 const AddProduct = () => {
   const { user, loading } = useContext(AuthContext);
@@ -80,14 +81,14 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="px-12 mx-auto mt-8 py-8 text-primary bg-slate-800">
+    <div className="px-12 mx-auto mt-8 py-8  text-primary-content add-product-bg">
       <h3>Add product, Please carefully fill up all the fields</h3>
 
       {/* form to accept data of new product */}
       <form className="form-control lg:max-w-3/5 mb-24" onSubmit={handleSubmit(handleAddProduct)}>
         {/* field starts*/}
         <label className="label">
-          <span className="label-text text-primary">Product Name</span>
+          <span className="label-text  text-primary-content">Product Name</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -102,7 +103,9 @@ const AddProduct = () => {
 
         {/* field starts */}
         <label className="label">
-          <span className="label-text text-primary">Product Condition, Select from dropdown</span>
+          <span className="label-text  text-primary-content">
+            Product Condition, Select from dropdown
+          </span>
         </label>
         <select className="input input-bordered w-full" {...register("condition")}>
           <option value="excellent">Excellent</option>
@@ -113,7 +116,7 @@ const AddProduct = () => {
 
         {/* field starts*/}
         <label className="label">
-          <span className="label-text text-primary">Current Location</span>
+          <span className="label-text  text-primary-content">Current Location</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -128,7 +131,7 @@ const AddProduct = () => {
 
         {/* field starts*/}
         <label className="label">
-          <span className="label-text text-primary">Resale Price</span>
+          <span className="label-text  text-primary-content">Resale Price</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -142,7 +145,7 @@ const AddProduct = () => {
         {/* field ends */}
         {/* field starts*/}
         <label className="label">
-          <span className="label-text text-primary">Original Price</span>
+          <span className="label-text  text-primary-content">Original Price</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -157,7 +160,7 @@ const AddProduct = () => {
 
         {/* field starts*/}
         <label className="label">
-          <span className="label-text text-primary">Years of Use</span>
+          <span className="label-text  text-primary-content">Years of Use</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -172,7 +175,7 @@ const AddProduct = () => {
 
         {/* field starts*/}
         <label className="label">
-          <span className="label-text text-primary">Year of Purchase</span>
+          <span className="label-text  text-primary-content">Year of Purchase</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -186,7 +189,9 @@ const AddProduct = () => {
         {/* field ends */}
         <label className="label">
           {" "}
-          <span className="label-text text-primary">Book Category, Select from dropdown</span>
+          <span className="label-text  text-primary-content">
+            Book Category, Select from dropdown
+          </span>
         </label>
         <select {...register("category")} className="select input-bordered w-full mb-8">
           {categories.map((category) => (
@@ -197,7 +202,7 @@ const AddProduct = () => {
         </select>
         {/* field starts*/}
         <label className="label">
-          <span className="label-text text-primary">Product Status</span>
+          <span className="label-text  text-primary-content">Product Status</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -212,7 +217,7 @@ const AddProduct = () => {
         {/* field ends */}
         {/* field starts*/}
         <label className="label">
-          <span className="label-text text-primary">Sellers Name</span>
+          <span className="label-text  text-primary-content">Sellers Name</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -227,7 +232,7 @@ const AddProduct = () => {
         {/* field starts*/}
 
         <label className="label">
-          <span className="label-text text-primary">Sellers Email</span>
+          <span className="label-text  text-primary-content">Sellers Email</span>
         </label>
         <input
           className="input input-bordered w-full"
@@ -243,7 +248,7 @@ const AddProduct = () => {
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
-            <span className="label-text text-primary">Photo</span>
+            <span className="label-text  text-primary-content">Photo</span>
           </label>
           <input
             type="file"

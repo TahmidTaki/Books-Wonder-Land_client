@@ -1,0 +1,5 @@
+.add-product-bg{
+    background: #122e18;
+background: -webkit-radial-gradient(circle, #122e18 0%, #161717 100%);
+background: radial-gradient(circle, #122e18 0%, #161717 100%);
+}
