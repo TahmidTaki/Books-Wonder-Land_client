@@ -7,7 +7,7 @@ const ReportedItems = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/reporteditems", {
+      .get("https://my-books-resale-server.vercel.app/reporteditems", {
         method: "PUT",
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -20,7 +20,7 @@ const ReportedItems = () => {
   }, []);
 
   const deleteItem = (id) => {
-    fetch(`http://localhost:5000/reportedbook/${id}`, {
+    fetch(`https://my-books-resale-server.vercel.app/reportedbook/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

@@ -28,7 +28,7 @@ const ModalFOrBooking = ({ user, bookingItem, setBookingItem }) => {
     };
     /* console.log(booking);
     setBookingItem(null); */
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://my-books-resale-server.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

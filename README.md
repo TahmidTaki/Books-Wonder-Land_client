@@ -1,6 +1,6 @@
 # Books Resale Website created with React App
 
-Live site can be viewed [Here](https://github.com/facebook/create-react-app).
+Live site can be viewed [Here](https://my-books-resale.web.app).
 
 ## Technologies Used
 

@@ -22,7 +22,7 @@ const BooksCollection = () => {
 
   //report item to admin
   const reportItem = (id) => {
-    fetch(`http://localhost:5000/reportitem/${id}`, {
+    fetch(`https://my-books-resale-server.vercel.app/reportitem/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

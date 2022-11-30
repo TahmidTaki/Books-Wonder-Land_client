@@ -45,7 +45,8 @@ const router = createBrowserRouter([
       {
         path: "/payment/:id",
         element: <Payment></Payment>,
-        loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://my-books-resale-server.vercel.app/bookings/${params.id}`),
       },
       {
         path: "/category/:id",
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: async ({ params }) => {
-          return fetch(`http://localhost:5000/category/${params.id}`);
+          return fetch(`https://my-books-resale-server.vercel.app/category/${params.id}`);
         },
       },
     ],

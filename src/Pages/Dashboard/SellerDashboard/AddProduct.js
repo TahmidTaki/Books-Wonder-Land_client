@@ -14,7 +14,7 @@ const AddProduct = () => {
   const { isLoading, data: categories } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categories");
+      const res = await fetch("https://my-books-resale-server.vercel.app/categories");
       const data = await res.json();
       return data;
     },
@@ -67,7 +67,7 @@ const AddProduct = () => {
             reportedStatus: "none",
           };
           console.log(book);
-          fetch("http://localhost:5000/books", {
+          fetch("https://my-books-resale-server.vercel.app/books", {
             method: "POST",
             headers: {
               "content-type": "application/json",

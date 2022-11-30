@@ -26,7 +26,7 @@ const SignUp = () => {
   const addUserDatabase = (name, email, role) => {
     const user = { name, email, role };
     console.log("from: ", user);
-    fetch("http://localhost:5000/users", {
+    fetch("https://my-books-resale-server.vercel.app/users", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
@@ -40,7 +40,7 @@ const SignUp = () => {
   /* const addUserDatabase2 = (name, email, role) => {
     const user = { name, email, role };
     console.log("from: ", user);
-    fetch("http://localhost:5000/userssocial", {
+    fetch("https://my-books-resale-server.vercel.app/userssocial", {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),

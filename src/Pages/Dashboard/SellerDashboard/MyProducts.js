@@ -7,7 +7,7 @@ import "./MyProduct.css";
 const MyProducts = () => {
   const { user, loading } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/books/${user?.email}`;
+  const url = `https://my-books-resale-server.vercel.app/books/${user?.email}`;
   //   console.log(url);
 
   const { data: books = [], refetch } = useQuery({
@@ -29,7 +29,7 @@ const MyProducts = () => {
 
   /* delete books */
   const deleteBook = (id) => {
-    fetch(`http://localhost:5000/books/${id}`, {
+    fetch(`https://my-books-resale-server.vercel.app/books/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -45,7 +45,7 @@ const MyProducts = () => {
   };
 
   const advertise = (id) => {
-    fetch(`http://localhost:5000/advertise/${id}`, {
+    fetch(`https://my-books-resale-server.vercel.app/advertise/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
